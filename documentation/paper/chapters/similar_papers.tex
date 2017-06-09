@@ -1,0 +1,16 @@
+Na temu očitavanja rukom pisanih slova izgrađena je nekolicina različitih sustava. Sustavi objavljeni u starijim radovima najčešće koriste stroj s potpornim vektorima \engl{Support Vector Machine} kao klasifikator uz prilagođene jezgre, dok noviji radovi na istu temu većinom koriste tehnike dubokog učenja te konvolucijske neuronske mreže.
+
+\section{\emph{LeNet-5} za očitavanje slova engleske abecede}
+
+U radu \citep{lenet5hecr} opisan je sustav za očitavanje rukom pisanih slova engleske abecede korištenjem modificirane verzije \emph{LeNet-5} konvolucijske neuronske mreže prikazane na slici \ref{fig:lenet5}. Sama mreža se razlikovala od standardne \emph{LeNet-5} arhitekture u tome što je imala veći broj neurona u pojedinim slojevima te izmijenjene veze između pojedini slojeva, točnije između dva početna konvolucijska sloja gdje je pojedini ulaz drugog konvolucijskog sloja spojen na više aktivacijskih mapa, to jest izlaza, prvog konvolucijskoga sloja.
+ 
+Nakon određenog broja epoha, greška klasifikacije prilikom učenja mreže opada sve sporije ili čak uopće ne opada. Razlog tomu je što nakon velikog broja epoha učenja mreže, u skupu za treniranje je jako mali broj krivo klasificiranih primjera čiji je utjecaj na učenje same mreže neprimjetan. Kako bi se doskočilo tom problemu, u ovom radu je razvijen algoritam \emph{ESRL} \engl{Error-Samples-Reinforcement-Learning algorithm}.
+
+Ideja iza tog algoritma je dinamička rekonstrukcija skupa za učenje nakon što greška klasifikacije na skupu za provjeru počne sporije opadati. Skup za učenje je rekonstruiran svakih nekoliko epoha na način da se krivo klasificirani primjeri umnože primjenom afinih transformacija i dodavanjem šuma, ili izbacivanjem dobro klasificiranih primjera tako da broj krivo klasificiranih primjera čini $33\% - 40\%$ udjela skupa za učenje.
+ 
+ Navedeni sustav je učen i evaluiran na \emph{UNIPEN} skupu podataka velikih i malih rukom pisanih slova engleske abecede. Sustav je ostvario $93.7\%$ točnosti na skupu za testiranje za velika slova, te $90.2\%$ točnosti na skupu za testiranje za mala slova.
+ 
+ %\section{Opuštena konvolucijska neuronska mreža}
+
+ 
+ %U radu \citep{rcnn}.
